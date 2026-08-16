@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO Meta Tags -->
+  <title>FacelessStudio AI — 1-Click Viral Faceless Video & Shorts Blueprint Generator</title>
+  <meta name="description" content="Generate complete faceless video blueprints: 3-second visual hooks, timed voiceover scripts, direct Pexels/Pixabay stock footage links, AI visual prompts, and SFX cues. 100% free.">
+  <meta name="keywords" content="faceless youtube video generator, shorts script generator, faceless reels blueprint, b-roll search tool, midjourney prompts for youtube">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="FacelessStudio AI — Free Faceless Video Blueprint Engine">
+  <meta property="og:description" content="Turn any topic into a 60s viral faceless script, direct B-roll search links, and AI image prompts in 1 click.">
+  <meta property="og:type" content="website">
+
+  <!-- Google Rich Snippet Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "FacelessStudio AI",
+    "applicationCategory": "MultimediaApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "description": "Free web-based tool for creating timed scripts, B-roll stock footage links, and AI image prompts for faceless content creators."
+  }
+  </script>
+
+  <!-- Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Montserrat:wght@800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #07090e;
+      --card-bg: rgba(22, 27, 34, 0.75);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --primary-gradient: linear-gradient(135deg, #10b981 0%, #06b6d4 50%, #6366f1 100%);
+      --accent: #10b981;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --input-bg: rgba(15, 23, 42, 0.85);
+      --shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.35);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
+    body {
+      background: var(--bg);
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(16, 185, 129, 0.12) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(6, 182, 212, 0.12) 0px, transparent 50%);
+      color: var(--text-main);
+      min-height: 100vh;
+      padding: 24px 16px;
+    }
+
+    .container { max-width: 980px; margin: 0 auto; }
+
+    header { text-align: center; margin-bottom: 24px; }
+    .badge {
+      display: inline-block;
+      padding: 5px 12px;
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #34d399;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    header h1 {
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      font-weight: 800;
+      background: var(--primary-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 6px;
+    }
+    header p { color: var(--text-muted); font-size: 0.95rem; }
+
+    .control-panel {
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 20px;
+      box-shadow: var(--shadow);
+      margin-bottom: 24px;
+    }
+    .input-grid { display: grid; grid-template-columns: 1fr; gap: 10px; }
+    @media(min-width: 640px) { .input-grid { grid-template-columns: 2fr 1fr 1fr; } }
+
+    input[type="text"], select {
+      width: 100%;
+      background: var(--input-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 12px 14px;
+      color: var(--text-main);
+      font-size: 0.9rem;
+    }
+    input:focus, select:focus { outline: none; border-color: var(--accent); }
+
+    .btn-glow {
+      background: var(--primary-gradient);
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      width: 100%;
+      margin-top: 10px;
+      transition: 0.2s ease;
+    }
+    .btn-glow:hover { filter: brightness(1.1); transform: translateY(-1px); }
+
+    /* Scene Storyboard Cards */
+    .scene-grid { display: flex; flex-direction: column; gap: 16px; margin-bottom: 24px; }
+    
+    .scene-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 16px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .scene-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--card-border);
+      padding-bottom: 8px;
+    }
+    .scene-timestamp {
+      font-weight: 800;
+      font-size: 0.85rem;
+      color: #34d399;
+      background: rgba(16, 185, 129, 0.1);
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+    .scene-title { font-weight: 700; font-size: 0.95rem; }
+
+    .meta-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+    @media(min-width: 768px) { .meta-row { grid-template-columns: 1.2fr 1fr; } }
+
+    .script-box {
+      background: var(--input-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 12px;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      color: #e2e8f0;
+    }
+
+    .prompt-box {
+      background: rgba(10, 15, 30, 0.7);
+      border: 1px solid rgba(6, 182, 212, 0.2);
+      border-radius: 8px;
+      padding: 12px;
+      font-size: 0.8rem;
+      color: #94a3b8;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .prompt-label { font-weight: 700; color: #38bdf8; font-size: 0.75rem; text-transform: uppercase; }
+
+    .action-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+    .btn-link {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--card-border);
+      color: #cbd5e1;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .btn-link:hover { background: rgba(255, 255, 255, 0.12); color: #fff; }
+
+    .copy-pill {
+      margin-left: auto;
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 700;
+    }
+    .copy-pill:hover { background: rgba(16, 185, 129, 0.25); }
+
+    .overview-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .stat-pill {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      padding: 12px;
+      border-radius: 8px;
+      text-align: center;
+    }
+    .stat-val { font-size: 1.1rem; font-weight: 800; color: #f8fafc; }
+    .stat-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; }
+
+    footer {
+      text-align: center;
+      padding: 20px 0;
+      border-top: 1px solid var(--card-border);
+      color: var(--text-muted);
+      font-size: 0.8rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <span class="badge">🎬 Faceless Video Automation</span>
+      <h1>FacelessStudio AI</h1>
+      <p>1-Click Storyboards, Timed Audio Scripts, Direct B-Roll Links & AI Visual Prompts</p>
+    </header>
+
+    <!-- Generator Controls -->
+    <div class="control-panel">
+      <div class="input-grid">
+        <input type="text" id="videoTopic" placeholder="e.g. 3 Dark Psychology Tricks You Use Daily" value="Why 99% Fail at Personal Finance in 2026">
+        <select id="nicheStyle">
+          <option value="psychology">🧠 Psychology & Dark Truths</option>
+          <option value="finance" selected>💰 Money & Finance Secrets</option>
+          <option value="tech">🤖 AI & Future Tech</option>
+          <option value="motivation">🔥 High-Stakes Motivation</option>
+          <option value="mystery">🕵️ History & Unsolved Mysteries</option>
+        </select>
+        <select id="durationSelect">
+          <option value="60s">⚡ 60s Viral Short / Reel (9:16)</option>
+          <option value="30s">⚡ 30s High-Retention (9:16)</option>
+        </select>
+      </div>
+      <button class="btn-glow" onclick="generateBlueprint()">⚡ Generate Full Production Blueprint</button>
+    </div>
+
+    <!-- Production Meta Summary -->
+    <div class="overview-grid" id="statsBar">
+      <div class="stat-pill">
+        <div class="stat-val" id="statPacing">140 WPM</div>
+        <div class="stat-label">Audio Pacing</div>
+      </div>
+      <div class="stat-pill">
+        <div class="stat-val" id="statDuration">60 Seconds</div>
+        <div class="stat-label">Target Duration</div>
+      </div>
+      <div class="stat-pill">
+        <div class="stat-val" id="statMusic">Dark Ambient 110BPM</div>
+        <div class="stat-label">Background Audio</div>
+      </div>
+      <div class="stat-pill">
+        <div class="stat-val" id="statRatio">9:16 Vertical</div>
+        <div class="stat-label">Aspect Ratio</div>
+      </div>
+    </div>
+
+    <!-- Storyboard Container -->
+    <div class="scene-grid" id="storyboardContainer">
+      <!-- Generated scene cards appear here -->
+    </div>
+
+    <!-- Monetization / Toolkit Card -->
+    <div class="scene-card" style="border: 1px solid rgba(16, 185, 129, 0.3);">
+      <div class="scene-header">
+        <span class="scene-title">🛠️ Recommended Faceless Production Tools</span>
+        <span class="badge" style="margin:0;">Curated</span>
+      </div>
+      <p style="font-size: 0.85rem; color: var(--text-muted);">
+        Essential AI tools to turn this blueprint into published 4K video:
+      </p>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin-top: 6px;">
+        <a href="https://elevenlabs.io/" target="_blank" class="btn-link" style="padding: 10px; display: block; border-radius: 8px;">
+          <strong style="color:#fff; display:block;">🎙️ ElevenLabs AI</strong>
+          <span style="font-size:0.75rem; color:var(--text-muted);">Hyper-realistic AI narration voices</span>
+        </a>
+        <a href="https://www.capcut.com/" target="_blank" class="btn-link" style="padding: 10px; display: block; border-radius: 8px;">
+          <strong style="color:#fff; display:block;">✂️ CapCut Auto-Captions</strong>
+          <span style="font-size:0.75rem; color:var(--text-muted);">Word-by-word viral animated subtitles</span>
+        </a>
+        <a href="https://www.epidemicsound.com/" target="_blank" class="btn-link" style="padding: 10px; display: block; border-radius: 8px;">
+          <strong style="color:#fff; display:block;">🎵 Epidemic Sound</strong>
+          <span style="font-size:0.75rem; color:var(--text-muted);">Royalty-free cinematic B-roll music & SFX</span>
+        </a>
+      </div>
+    </div>
+
+    <footer>
+      <p>© 2026 FacelessStudio AI • Open Client-Side Creation Engine</p>
+    </footer>
+  </div>
+
+  <script>
+    const sceneBlueprints = {
+      finance: [
+        {
+          time: "00:00 - 00:06",
+          title: "Viral Scroll-Stop Hook",
+          script: (t) => `If you have less than $10,000 saved, stop making this one critical mistake with ${t}.`,
+          brollKey: "counting money vault dark lighting",
+          aiPrompt: (t) => `Cinematic photorealistic shot of a solitary silhouette standing before a glowing digital financial vault, dramatic volumetric lighting, cinematic 8k --ar 9:16`,
+          sfx: "Bass Whoosh + Digital Glitch"
+        },
+        {
+          time: "00:06 - 00:18",
+          title: "The Silent Drain (Problem)",
+          script: (t) => `Most people believe working harder solves their money problem. But inflation and hidden lifestyle inflation silently eat 90% of your gains before you even invest.`,
+          brollKey: "stressed person hourglass financial charts",
+          aiPrompt: (t) => `Hourglass where sand is replaced by glowing gold coins dissolving into thin air, hyper-detailed, moody cinematic atmosphere --ar 9:16`,
+          sfx: "Subtle Heartbeat Thud"
+        },
+        {
+          time: "00:18 - 00:45",
+          title: "The Unfair Advantage (Action Step)",
+          script: (t) => `Here is the framework top wealth builders use: First, lock away 20% in automated index funds. Second, build one asynchronous income stream before upgrading your lifestyle.`,
+          brollKey: "modern skyscraper stock market green line graph",
+          aiPrompt: (t) => `Futuristic skyscraper boardroom overlooking a neon city skyline at night, clean minimalist aesthetic, hyper-realistic --ar 9:16`,
+          sfx: "Cash Register Ding + Positive Rise"
+        },
+        {
+          time: "00:45 - 01:00",
+          title: "Retention Loop & Call to Action",
+          script: (t) => `Save this video so you don't lose the blueprint, and comment 'SCALE' below for part two tomorrow.`,
+          brollKey: "phone smartphone screen tap notification",
+          aiPrompt: (t) => `Glowing futuristic smartphone screen showing compound interest exponential growth graph, cinematic studio lighting --ar 9:16`,
+          sfx: "Notification Pop + Deep Outro Sub"
+        }
+      ],
+      psychology: [
+        {
+          time: "00:00 - 00:06",
+          title: "Curiosity Loop Hook",
+          script: (t) => `If someone stares at your forehead while you speak, here is the psychological warfare happening behind it.`,
+          brollKey: "person silhouette shadow intense eye focus",
+          aiPrompt: (t) => `Close-up intense cinematic portrait of a face half in shadow, glowing piercing eyes, hyper-detailed noir style --ar 9:16`,
+          sfx: "Reverse Cymbal Swell"
+        },
+        {
+          time: "00:06 - 00:18",
+          title: "The Perception Shift",
+          script: (t) => `It's known as the 'Status Domination Effect'. By breaking natural eye contact and targeting the brow, they trigger an unconscious feeling of vulnerability in your brain.`,
+          brollKey: "brain neural network glowing thoughts",
+          aiPrompt: (t) => `Glowing holographic human brain with synapsing blue neurons inside a dark moody laboratory, 8k --ar 9:16`,
+          sfx: "High Frequency Drone"
+        },
+        {
+          time: "00:18 - 00:45",
+          title: "The Exact Counter-Move",
+          script: (t) => `To immediately flip the psychological power: hold your ground, pause for exactly two full seconds, smile slightly, and lower your vocal pitch.`,
+          brollKey: "confident person walking dark aesthetic",
+          aiPrompt: (t) => `Confident silhouette walking through foggy city streets under dim streetlights, cinematic framing, 8k --ar 9:16`,
+          sfx: "Impact Drum Hit"
+        },
+        {
+          time: "00:45 - 01:00",
+          title: "High-Retention Loop",
+          script: (t) => `Share this with someone who needs mental defense, and follow for more dark psychology tactics.`,
+          brollKey: "chess king piece falling dark board",
+          aiPrompt: (t) => `Macro shot of a fallen obsidian chess piece on a rainy glass chessboard, cinematic lighting --ar 9:16`,
+          sfx: "Vinyl Tape Stop"
+        }
+      ]
+    };
+
+    function generateBlueprint() {
+      const topic = document.getElementById('videoTopic').value.trim() || 'Hidden Secrets of 2026';
+      const niche = document.getElementById('nicheStyle').value;
+      const duration = document.getElementById('durationSelect').value;
+      
+      const container = document.getElementById('storyboardContainer');
+      container.innerHTML = '';
+
+      const scenes = sceneBlueprints[niche] || sceneBlueprints['finance'];
+      const totalScenes = duration === '30s' ? scenes.slice(0, 2) : scenes;
+
+      totalScenes.forEach((scene, index) => {
+        const scriptText = scene.script(topic);
+        const promptText = scene.aiPrompt(topic);
+        const pexelsUrl = `https://www.pexels.com/search/videos/${encodeURIComponent(scene.brollKey)}/`;
+        const pixabayUrl = `https://pixabay.com/videos/search/${encodeURIComponent(scene.brollKey)}/`;
+
+        const card = document.createElement('div');
+        card.className = 'scene-card';
+        card.innerHTML = `
+          <div class="scene-header">
+            <div>
+              <span class="scene-timestamp">${scene.time}</span>
+              <span class="scene-title" style="margin-left: 8px;">Scene ${index + 1}: ${scene.title}</span>
+            </div>
+            <button class="copy-pill" onclick="copyText('${escape(scriptText)}')">📋 Copy Script</button>
+          </div>
+          
+          <div class="meta-row">
+            <div>
+              <label style="font-size:0.75rem; color:var(--text-muted); font-weight:700; text-transform:uppercase; display:block; margin-bottom:4px;">🎙️ Timed Voiceover Script</label>
+              <div class="script-box">${scriptText}</div>
+            </div>
+            <div>
+              <label style="font-size:0.75rem; color:var(--text-muted); font-weight:700; text-transform:uppercase; display:block; margin-bottom:4px;">🎨 Midjourney / AI Prompt</label>
+              <div class="prompt-box">
+                <span class="prompt-label">Prompt Syntax</span>
+                <span>${promptText}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="action-row">
+            <span style="font-size:0.75rem; color:var(--text-muted); font-weight:600;">Stock Video B-Roll:</span>
+            <a href="${pexelsUrl}" target="_blank" class="btn-link">🎥 Pexels "${scene.brollKey}" ↗</a>
+            <a href="${pixabayUrl}" target="_blank" class="btn-link">🎬 Pixabay ↗</a>
+            <span style="font-size:0.75rem; color:#facc15; margin-left:auto; font-weight:600;">SFX: ${scene.sfx}</span>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function copyText(encodedText) {
+      navigator.clipboard.writeText(unescape(encodedText));
+      alert('Voiceover script copied to clipboard!');
+    }
+
+    window.onload = function() {
+      generateBlueprint();
+    };
+  </script>
+</body>
+  </html>
